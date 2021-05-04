@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Congrats from './Congrats';
+import GuessedWords from './GuessedWords';
+import Input from './Input';
 
 function App() {
+  const success = false;
+  const secretWord = 'party';
+  const guessedWords = [];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-test="component-app" className="container">
+      <h1>Jotto</h1>
+      <Input success={success} secretWord={secretWord}/>
+      <Congrats success={false}/>
+      <GuessedWords guessedWords={guessedWords} />
     </div>
   );
 }
