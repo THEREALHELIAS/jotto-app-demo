@@ -1,11 +1,11 @@
 import checkPropTypes from 'check-prop-types';
+import {createStore, applyMiddleware} from 'redux';
+import rootReducer from '../src/reducers/index';
+import { middlewares } from '../src/configureStore';
 
-/**
- * Returns node(s) with the given data-test attribute.
- * @param {ShallowWrapper} wrapper - Enzyme shallow wrapper.
- * @param {*} val - Value of data-test attribute for search.
- * @returns {ShallowWrapper}
- */
+export const storeFactory = (initialState) => {
+  return createStore(rootReducer, initialState, applyMiddleware(...middlewares));
+}
 
 export const findByTestAttr = (wrapper, val) => {
   return wrapper.find(`[data-test="${val}"]`)
